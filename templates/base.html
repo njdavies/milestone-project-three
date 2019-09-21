@@ -17,6 +17,36 @@
 
 <body>
 
+    <!-- Site Banner and navigation bar -->
+    <header>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="{{ url_for('home') }}" class="brand-logo"><i class="material-icons">cake</i>CAKE
+                            COOKBOOK</a>
+                        <a href="" class="sidenav-trigger" data-target="mobile-demo"><i
+                                class="material-icons">menu</i></a>
+                        <ul class="hide-on-med-and-down right">
+                            <li><a href="{{ url_for('home') }}">Home</a></li>
+                            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+                            <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
+                            <li><a href="{{ url_for('cake_collections') }}">Cake Collections</a></li>
+                            <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Side Navigation bar which will activate for smaller viewports -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('recipes')}}">Recipes</a></li>
+            <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
+            <li><a href="{{ url_for('cake_collections') }}">Cake Collections</a></li>
+            <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
+        </ul>
+    </header>
 
     <!-- Links to External scripts -->
     <!-- Compiled and minified JQuery -->
