@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <!-- Set the viewport to allow responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!--Import Font Awesome Icon-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <!-- Compiled and minified Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+      type="text/css"
+    />
+  </head>
 
-<body>
-
+  <body>
     <!-- Site Banner and navigation bar -->
     <header>
-        <div class="navbar-fixed">
-            <nav>
-                <div class="container">
-                    <div class="nav-wrapper">
-                        <a href="{{ url_for('home') }}" class="brand-logo"><i class="material-icons">cake</i>CAKE
-                            COOKBOOK</a>
-                        <a href="" class="sidenav-trigger" data-target="mobile-demo"><i
-                                class="material-icons">menu</i></a>
-                        <ul class="hide-on-med-and-down right">
-                            <li><a href="{{ url_for('home') }}">Home</a></li>
-                            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-                            <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
-                            <li><a href="{{ url_for('cake_collections') }}">Cake Collections</a></li>
-                            <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- Side Navigation bar which will activate for smaller viewports -->
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('recipes')}}">Recipes</a></li>
-            <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
-            <li><a href="{{ url_for('cake_collections') }}">Cake Collections</a></li>
-            <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
-        </ul>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="container">
+            <div class="nav-wrapper">
+              <a href="{{ url_for('home') }}" class="brand-logo"
+                ><i class="material-icons">cake</i>CAKE COOKBOOK</a
+              >
+              <a href="" class="sidenav-trigger" data-target="mobile-demo"
+                ><i class="material-icons">menu</i></a
+              >
+              <ul class="hide-on-med-and-down right">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+                <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
+                <li>
+                  <a href="{{ url_for('cake_collections') }}"
+                    >Cake Collections</a
+                  >
+                </li>
+                <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Side Navigation bar which will activate for smaller viewports -->
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+        <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
+        <li>
+          <a href="{{ url_for('cake_collections') }}">Cake Collections</a>
+        </li>
+        <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
+      </ul>
     </header>
+
+    <!-- Site Footer -->
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          © 2019 Nathan Davies
+        </div>
+      </div>
+    </footer>
 
     <!-- Links to External scripts -->
     <!-- Compiled and minified JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Compiled and minified Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-</body>
-
+  </body>
 </html>
