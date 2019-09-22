@@ -10,6 +10,12 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+/*------------------------------------------Special Padding/Margins/Display*/
+
+.page-footer {
+    padding-top: 0px;
+}
+
 /*------------------------------------------Media Queries*/
 
 @media (min-width: 320px) {
