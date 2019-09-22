@@ -68,6 +68,13 @@ body {
     color: #ff7e1a;
 }
 
+/*------------------------------------------Health & Diet page*/
+
+.responsive-img-healthy {
+    height: 255px !important;
+    width: 100%;
+}
+
 /*------------------------------------------Special Padding/Margins/Display*/
 
 body {
@@ -210,6 +217,10 @@ main {
     responsive-img-cuisine {
         height: 300px !important;
     }
+
+    .responsive-img-healthy {
+        height: 300px !important;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1366px) {
@@ -276,5 +287,9 @@ main {
     .responsive-img-cuisine {
         height: 400px !important;
         width: 90% !important;
+    }
+
+    .health-padding {
+        padding-bottom: 418px;
     }
 }
