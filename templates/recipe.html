@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- When a recipe is selected from the list of recipes displayed on the selected recipes page,
+the following html is rendered -->
+
+<div class="container">
+    <br>
+    <div class="row valign-wrapper">
+        {% for rec in recipe %}
+        <div class="col s12 m6 recipe-padding">
+            <div class="center-align">
+                <h1 class="recipe-name-margin">{{ rec.name }}</h1>
+            </div>
+            <div class="center-align rating-padding">
+                {% set remainder = 10 - rec.rating %}
+                {% for num in range(1, rec.rating) %}
+                <span class="fa fa-star checked highlight-colour"></span>
+                {% endfor %}
+                {% for num in range(1, remainder) %}
+                <span class="fa fa-star"></span>
+                {% endfor %}
+            </div>
+            <div class="center-align">
+                <span>{{ rec.time_to_cook.readyIn }} min</span> &nbsp;|&nbsp; <span>{{ rec.views }}
+                    views</span>
+            </div>
+            <div>
+                <p>{{ rec.description }}</p>
+            </div>
+            <div class="center-align">
+                <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp; <span>Cake
+                    Type: <span class="highlight-colour">{{ rec.type }}</span></span>
+            </div>
+        </div>
+        <div class="col s12 m6 img-padding">
+            <img class="responsive-img materialboxed hoverable" data-caption="{{ rec.name }}" src="{{ rec.image }}"
+                alt="A picture of a cake" />
+        </div>
+    </div>
+    <div class="row ingredients-header-margin">
+        <div class="col s12">
+            <h2>Ingredients</h2>
+            <span>Serves: <span class="highlight-colour">{{ rec.serves }}</span></span>
+        </div>
+    </div>
+    <div class="row ingredients-margin">
+        <div class="col s12 column-style">
+            {% for ingredient in rec.ingredients %}
+            <ul class="list-align">
+                <li>{{ ingredient }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h2>Instructions</h2>
+            <span>Prep time: <span class="highlight-colour">{{ rec.time_to_cook.prepTime }}</span> min</span>
+            &nbsp;|&nbsp;
+            <span>Cook time: <span class="highlight-colour">
+                    {{ rec.time_to_cook.cookTime }}</span> min</span>
+            <ol>
+                {% for instruction in rec.instructions %}
+                <li>{{ instruction }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large button-colour red">
+        <i class="large material-icons">build</i>
+    </a>
+    <ul>
+        <li><a href="{{url_for('delete_recipe', recipe_id=rec._id)}}" class="btn-floating red tooltipped"
+                data-tooltip="Delete recipe"><i class="material-icons">delete</i></a>
+        </li>
+        <li><a href="{{url_for('edit_recipe', recipe_id=rec._id)}}" class="btn-floating red tooltipped"
+                data-tooltip="Edit recipe"><i class="material-icons">edit</i></a>
+        </li>
+    </ul>
+</div>
+{% endfor %}
+
+{% endblock %}
