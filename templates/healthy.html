@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Each cake image and respective header is wrapped in an anchor tag, which will provide a summarised list
+        of all recipes under the specific healthy option when selected. -->
+
+<div>
+    <h1 class="collections-header">Health & Diet</h1>
+</div>
+<div class="row health-padding">
+    <div class="col s12 m4">
+        <a href="{{url_for('selected_recipes', key='healthy', value='Gluten Free')}}">
+            <img class="responsive-img-healthy hoverable" src="{{url_for('static', filename='images/gluten_free.jpg')}}"
+                alt="A picture of a Gluten Free cake">
+            <h2 class="collections-type">Gluten Free <span class="recipe-count">({{ glutenFreeCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s12 m4">
+        <a href="{{url_for('selected_recipes', key='healthy', value='Low Fat')}}">
+            <img class="responsive-img-healthy hoverable" src="{{url_for('static', filename='images/low_fat.jpg')}}"
+                alt="A picture of a Low Fat cake">
+            <h2 class="collections-type">Low Fat <span class="recipe-count">({{ lowFatCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s12 m4">
+        <a href="{{url_for('selected_recipes', key='healthy', value='Low Calorie')}}">
+            <img class="responsive-img-healthy hoverable" src="{{url_for('static', filename='images/low_calorie.jpg')}}"
+                alt="A picture of a Low Calorie cake">
+            <h2 class="collections-type">Low Calorie <span class="recipe-count">({{ lowCalorieCount }})</span></h2>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
