@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row daily-recipe-padding">
+    <h1 class="daily-recipe-header">Recipe of the Day</h1>
+</div>
+
+<div class="container">
+    <div class="row valign-wrapper">
+        <!-- For each field in the recipe record, render the following html -->
+        {% for rec in recipe %}
+        <div class="col s12 m6 recipe-padding">
+            <div class="center-align">
+                <h1 class="recipe-name-margin">{{ rec.name }}</h1>
+            </div>
+            <div class="center-align rating-padding">
+                <!-- Set the value of the remainder variable by deducting the recipe rating from 10 -->
+                {% set remainder = 10 - rec.rating %}
+                <!-- Add a checked star icon for each number between 1 and the recipe rating -->
+                {% for num in range(1, rec.rating) %}
+                <span class="fa fa-star checked highlight-colour"></span>
+                {% endfor %}
+                <!-- Add a blank star icon for the remaining values between 1 and the remainder variable -->
+                {% for num in range(1, remainder) %}
+                <span class="fa fa-star"></span>
+                {% endfor %}
+            </div>
+            <div class="center-align">
+                <span>{{ rec.time_to_cook.readyIn }} min</span> &nbsp;|&nbsp; <span>{{ rec.views }}
+                    views</span>
+            </div>
+            <div>
+                <p>{{ rec.description }}</p>
+            </div>
+            <div class="center-align">
+                <div class="center-align">
+                    <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp;
+                    <span>Cake
+                        Type: <span class="highlight-colour">{{ rec.type }}</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6 img-padding">
+            <img class="responsive-img materialboxed hoverable" data-caption="{{ rec.name }}" src="{{ rec.image }}"
+                alt="A picture of a cake" />
+        </div>
+    </div>
+    <div class="row ingredients-header-margin">
+        <div class="col s12">
+            <h2>Ingredients</h2>
+            <span>Serves: <span class="highlight-colour">{{ rec.serves }}</span></span>
+        </div>
+    </div>
+    <div class="row ingredients-margin">
+        <div class="col s12 column-style">
+            {% for ingredient in rec.ingredients %}
+            <ul class="list-align">
+                <li>{{ ingredient }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h2>Instructions</h2>
+            <span>Prep time: <span class="highlight-colour">{{ rec.time_to_cook.prepTime }}</span> min</span>
+            &nbsp;|&nbsp;
+            <span>Cook time: <span class="highlight-colour">
+                    {{ rec.time_to_cook.cookTime }}</span> min</span>
+            <ol>
+                {% for instruction in rec.instructions %}
+                <li>{{ instruction }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
