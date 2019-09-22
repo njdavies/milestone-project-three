@@ -6,6 +6,11 @@ body {
 
 /*------------------------------------------Colours*/
 
+.highlight-colour {
+    color: #ff7e1a;
+    font-weight: 700;
+}
+
 .checked {
     color: #ff7e1a;
 }
@@ -113,6 +118,10 @@ main {
         height: 250px;
     }
 
+    .valign-wrapper {
+        display: inline;
+    }
+
 }
 
 @media (min-width: 360px) {
@@ -165,6 +174,12 @@ main {
 
     body {
         background-color: #fff;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
     }
 }
 
