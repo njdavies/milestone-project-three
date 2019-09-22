@@ -11,9 +11,15 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
 
-@app.route('/')
+@app.route("/")
+@app.route("/home")
 def home():
-    return "Test"
+    """
+    Request one random record from the database and store this in the 
+    recipe variable. This is then passed to the render_template method 
+    to be used when rendering the index.html page.
+    """
+    return render_template("index.html", recipe=mongo.db.recipes.aggregate([{"$sample": {"size": 1}}]))
 
 
 if __name__ == '__main__':
