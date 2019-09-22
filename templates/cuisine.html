@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Each cake image and respective header is wrapped in an anchor tag, which will provide a summarised list
+    of all recipes under the specific cuisine when selected -->
+
+<div>
+    <h1 class="collections-header">Cuisine</h1>
+</div>
+<div class="row">
+    <div class="col s6">
+        <a href="{{url_for('selected_recipes', key='cuisine', value='British')}}">
+            <img class="responsive-img-cuisine hoverable" src="{{url_for('static', filename='images/british.jpg')}}"
+                alt="A picture of a British cake">
+            <h2 class="collections-type">British <span class="recipe-count">({{ britishCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6">
+        <a href="{{url_for('selected_recipes', key='cuisine', value='American')}}">
+            <img class="responsive-img-cuisine hoverable" src="{{url_for('static', filename='images/american.jpg')}}"
+                alt="A picture of an American cake">
+            <h2 class="collections-type">American <span class="recipe-count">({{ americanCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6">
+        <a href="{{url_for('selected_recipes', key='cuisine', value='French')}}">
+            <img class="responsive-img-cuisine hoverable" src="{{url_for('static', filename='images/french.jpg')}}"
+                alt="A picture of a French cake">
+            <h2 class="collections-type">French <span class="recipe-count">({{ frenchCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6">
+        <a href="{{url_for('selected_recipes', key='cuisine', value='Greek')}}">
+            <img class="responsive-img-cuisine hoverable" src="{{url_for('static', filename='images/greek.jpg')}}"
+                alt="A picture of a Greek cake">
+            <h2 class="collections-type">Greek <span class="recipe-count">({{ greekCount }})</span></h2>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
