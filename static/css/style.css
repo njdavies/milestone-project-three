@@ -15,6 +15,16 @@ body {
     color: #ff7e1a;
 }
 
+hr {
+    border: 1px solid #ee6e73;
+    width: 75%;
+}
+
+a {
+    color: black;
+}
+
+
 /*------------------------------------------Buttons*/
 
 .btn {
@@ -220,6 +230,10 @@ main {
 
     .responsive-img-healthy {
         height: 300px !important;
+    }
+
+    hr {
+        margin-bottom: 15px;
     }
 }
 
