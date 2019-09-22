@@ -66,6 +66,16 @@ def healthy():
     return render_template("healthy.html", glutenFreeCount=glutenFree, lowFatCount=lowFat, lowCalorieCount=lowCalorie)
 
 
+@app.route("/selected_recipes/<key>,<value>")
+def selected_recipes(key, value):
+    """
+    For the selected cake collection selected, send a query to the database to find a list of those
+    recipes. These records are then stored in the variable recipes and passed to the render_template
+    method to be used when rendering the selectedrecipes.html page.
+    """
+    return render_template("selectedrecipes.html", recipes=mongo.db.recipes.find({key: value}))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
