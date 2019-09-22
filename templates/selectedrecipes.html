@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- If there are no recipes under the selected collection the following html is displayed -->
+{% if recipes == 0 %}
+<div class="row collections-header">
+    <h1>No recipes available!</h1>
+</div>
+{% else %}
+<!-- If there are recipes under the selected collection then the following html is displayed -->
+<div class="row collections-header">
+    <h1>Select a recipe for more information</h1>
+</div>
+{% for recipe in recipes %}
+<div class="row valign-wrapper">
+    <div class="col s12 m6 recipe-padding">
+        <div class="center-align">
+            <a href="{{url_for('recipe', recipe_id=recipe._id)}}">
+                <h1 class="recipe-name-margin">{{ recipe.name }}</h1>
+            </a>
+        </div>
+        <div class="center-align rating-padding">
+            {% set remainder = 10 - recipe.rating %} {% for num in range(1, recipe.rating) %}
+            <span class="fa fa-star checked highlight-colour"></span>
+            {% endfor %} {% for num in range(1, remainder) %}
+            <span class="fa fa-star"></span>
+            {% endfor %}
+        </div>
+        <div class="center-align">
+            <span>{{ recipe.time_to_cook.readyIn }} min</span> &nbsp;|&nbsp;
+            <span>{{ recipe.views }} views</span>
+        </div>
+        <div>
+            <p>{{ recipe.description }}</p>
+        </div>
+        <div class="center-align">
+            <div class="center-align">
+                <span>Author:
+                    <span class="highlight-colour">{{ recipe.author }}</span></span>
+                &nbsp;|&nbsp;
+                <span>Cake Type:
+                    <span class="highlight-colour">{{ recipe.type }}</span></span>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6 img-padding">
+        <img class="responsive-img materialboxed hoverable" data-caption="{{ recipe.name }}" src="{{ recipe.image }}"
+            alt="A picture of a cake" />
+    </div>
+</div>
+<br />
+<hr />
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large button-colour red">
+        <i class="large material-icons">build</i>
+    </a>
+    <ul>
+        <li>
+            <a href="{{ url_for('add_recipe') }}" class="btn-floating red tooltipped" data-tooltip="Add recipe"><i
+                    class="material-icons">add</i></a>
+        </li>
+    </ul>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
