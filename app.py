@@ -22,6 +22,23 @@ def home():
     return render_template("index.html", recipe=mongo.db.recipes.aggregate([{"$sample": {"size": 1}}]))
 
 
+@app.route("/cake_collections")
+def cake_collections():
+    """
+    Request a count of each cake type in the database and store this value
+    in the respective variable. This is then passed to the render_template
+    method to be used in rendering the cakecollections.html page.
+    """
+    chocolate = mongo.db.recipes.find({"type": "Chocolate"}).count()
+    loaf = mongo.db.recipes.find({"type": "Loaf"}).count()
+    sponge = mongo.db.recipes.find({"type": "Sponge"}).count()
+    cheesecake = mongo.db.recipes.find({"type": "Cheesecake"}).count()
+    nutAndSeed = mongo.db.recipes.find({"type": "Nut and Seed"}).count()
+    traybake = mongo.db.recipes.find({"type": "Traybake"}).count()
+    return render_template("cakecollections.html", chocolateCount=chocolate, loafCount=loaf, spongeCount=sponge,
+                           cheesecakeCount=cheesecake, nutAndSeedCount=nutAndSeed, traybakeCount=traybake)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
