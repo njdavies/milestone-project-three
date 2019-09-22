@@ -69,11 +69,22 @@ def healthy():
 @app.route("/selected_recipes/<key>,<value>")
 def selected_recipes(key, value):
     """
-    For the selected cake collection selected, send a query to the database to find a list of those
-    recipes. These records are then stored in the variable recipes and passed to the render_template
+    For the selected cake collection selected i.e. Chocolate, loaf etc, send a query to the database to find a 
+    list of those recipes. These records are then stored in the variable recipes and passed to the render_template
     method to be used when rendering the selectedrecipes.html page.
     """
     return render_template("selectedrecipes.html", recipes=mongo.db.recipes.find({key: value}))
+
+
+@app.route("/recipe/<recipe_id>")
+def recipe(recipe_id):
+    """
+    When selecting a recipe from the list of selected recipes send a query to the database, passing it the recipe_id
+    to request this record back. Store this record in the recipe variable and pass this to the render_template method
+    to render the recipe.html page.
+    """
+    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+    return render_template("recipe.html", recipe=the_recipe)
 
 
 if __name__ == '__main__':
