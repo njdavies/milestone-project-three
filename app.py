@@ -39,6 +39,20 @@ def cake_collections():
                            cheesecakeCount=cheesecake, nutAndSeedCount=nutAndSeed, traybakeCount=traybake)
 
 
+@app.route("/cuisine")
+def cuisine():
+    """
+    Request a count of each cuisine type in the database and store this value
+    in the respective variable. This is then passed to the render_template
+    method to be used in rendering the cuisine.html page.
+    """
+    british = mongo.db.recipes.find({"cuisine": "British"}).count()
+    american = mongo.db.recipes.find({"cuisine": "American"}).count()
+    french = mongo.db.recipes.find({"cuisine": "French"}).count()
+    greek = mongo.db.recipes.find({"cuisine": "Greek"}).count()
+    return render_template("cuisine.html", britishCount=british, americanCount=american, frenchCount=french, greekCount=greek)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
