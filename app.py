@@ -100,6 +100,46 @@ def add_recipe():
     return render_template("addrecipe.html", recipes=mongo.db.recipes.find(), cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
 
 
+@app.route("/insert_recipe", methods=["POST"])
+def insert_recipe():
+    """
+    Function called when a user submits a new recipe to the database. 
+    """
+
+    # Take each line from the ingredients textarea of the addrecipe.html
+    # page and split this into an array to be uploaded to the database
+    ingredients_list = request.form["ingredients"].split("\n")
+
+    # Take each line from the instructions textarea of the addrecipe.html
+    # page and split this into an array to be uploaded to the database
+    instructions_list = request.form["instructions"].split("\n")
+
+    recipes = mongo.db.recipes
+    # Insert the completed recipe into the database by requesting
+    # each completed field from the addrecipe form
+    recipes.insert_one({
+
+        "type": request.form["type"],
+        "name": request.form["name"],
+        "image": request.form["image"],
+        "cuisine": request.form["cuisine"],
+        "author": request.form["author"],
+        "rating": 0,
+        "views": 0,
+        "description": request.form["description"],
+        "healthy": request.form["healthy"],
+        "time_to_cook": {
+            "prepTime": int(request.form["prepTime"]),
+            "cookTime": int(request.form["cookTime"]),
+            "readyIn": int(request.form["readyIn"]),
+        },
+        "serves": int(request.form["serves"]),
+        "ingredients": ingredients_list,
+        "instructions": instructions_list
+    })
+    return redirect(url_for("home"))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
