@@ -53,6 +53,19 @@ def cuisine():
     return render_template("cuisine.html", britishCount=british, americanCount=american, frenchCount=french, greekCount=greek)
 
 
+@app.route("/healthy")
+def healthy():
+    """
+    Request a count of each health & diet type in the database and store this value
+    in the respective variable. This is then passed to the render_template
+    method to be used in rendering the healthy.html page.
+    """
+    glutenFree = mongo.db.recipes.find({"healthy": "Gluten Free"}).count()
+    lowFat = mongo.db.recipes.find({"healthy": "Low Fat"}).count()
+    lowCalorie = mongo.db.recipes.find({"healthy": "Low Calorie"}).count()
+    return render_template("healthy.html", glutenFreeCount=glutenFree, lowFatCount=lowFat, lowCalorieCount=lowCalorie)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
