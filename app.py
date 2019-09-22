@@ -87,6 +87,19 @@ def recipe(recipe_id):
     return render_template("recipe.html", recipe=the_recipe)
 
 
+@app.route("/add_recipe")
+def add_recipe():
+    """
+    Request each unique value for the fields 'type', 'cuisine' and 'healthy' in the database. The values returned are 
+    stored in the recipes variable. These unique values will then be used in the addrecipe.html page to correctly
+    display a list of options to select from when adding a new recipe.
+    """
+    cake_types = mongo.db.recipes.distinct("type")
+    cuisine_types = mongo.db.recipes.distinct("cuisine")
+    healthy_types = mongo.db.recipes.distinct("healthy")
+    return render_template("addrecipe.html", recipes=mongo.db.recipes.find(), cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
