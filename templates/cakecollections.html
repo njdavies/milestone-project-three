@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Each cake image and respective header is wrapped in an anchor tag, which will 
+    provide a summarised list of all recipes under the specific type when selected. -->
+
+<div>
+    <h1 class="collections-header">Cake Collections</h1>
+</div>
+<div class="row">
+    <div class="col s6 m4">
+        <a href="{{url_for('selected_recipes', key='type', value='Chocolate')}}">
+            <img class="responsive-img hoverable" src="{{url_for('static', filename='images/chocolate_cake.jpg')}}"
+                alt="A picture of a chocolate cake">
+            <h2 class="collections-type">Chocolate Cake <span class="recipe-count">({{ chocolateCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6 m4">
+        <a href="{{url_for('selected_recipes', key='type', value='Loaf')}}">
+            <img class="responsive-img hoverable" src="{{url_for('static', filename='images/loaf_cake.jpg')}}"
+                alt="A picture of a loaf cake">
+            <h2 class="collections-type">Loaf Cake <span class="recipe-count">({{ loafCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6 m4">
+        <a href="{{url_for('selected_recipes', key='type', value='Cheesecake')}}">
+            <img class="responsive-img hoverable" src="{{url_for('static', filename='images/cheesecake.jpg')}}"
+                alt="A picture of a cheesecake">
+            <h2 class="collections-type">Cheesecake <span class="recipe-count">({{ cheesecakeCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6 m4">
+        <a href="{{url_for('selected_recipes', key='type', value='Traybake')}}">
+            <img class="responsive-img hoverable" src="{{url_for('static', filename='images/traybake_cake.jpg')}}"
+                alt="A picture of a traybake cake">
+            <h2 class="collections-type">Tarybake <span class="recipe-count">({{ traybakeCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6 m4">
+        <a href="{{url_for('selected_recipes', key='type', value='Sponge')}}">
+            <img class="responsive-img hoverable" src="{{url_for('static', filename='images/sponge_cake.jpg')}}"
+                alt="A picture of a sponge cake">
+            <h2 class="collections-type">Sponge Cake <span class="recipe-count">({{ spongeCount }})</span></h2>
+        </a>
+    </div>
+    <div class="col s6 m4">
+        <a href="{{url_for('selected_recipes', key='type', value='Nut and Seed')}}">
+            <img class="responsive-img hoverable" src="{{url_for('static', filename='images/nut_and_seed_cake.jpg')}}"
+                alt="A picture of a nut and seed cake">
+            <h2 class="collections-type">Nut and Seed <span class="recipe-count">({{ nutAndSeedCount }})</span></h2>
+        </a>
+    </div>
+</div>
+
+
+{% endblock %}
