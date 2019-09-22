@@ -15,12 +15,31 @@ body {
     color: #ff7e1a;
 }
 
+/*------------------------------------------Collections page*/
+
+.collections-header {
+    color: #ee6e73;
+    padding: 10px;
+    margin: 0px;
+    text-align: center;
+}
+
+.collections-type {
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    margin: 0px;
+}
+
+.recipe-count {
+    color: #ff7e1a;
+}
+
 /*------------------------------------------Buttons*/
 
 .btn {
     background-color: #ee6e73;
 }
-
 
 /*------------------------------------------Navbar*/
 
@@ -175,6 +194,11 @@ main {
     .daily-recipe-padding {
         margin-bottom: 10px;
     }
+
+    .collections-header {
+        font-size: 30px;
+        text-align: center;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1366px) {
@@ -200,6 +224,10 @@ main {
     nav ul a {
         font-size: 20px;
     }
+
+    .collections-header {
+        text-align: center;
+    }
 }
 
 @media (min-width: 1366px) {
@@ -224,5 +252,9 @@ main {
     img.responsive-img {
         width: 100%;
         height: 450px;
+    }
+
+    .collections-header {
+        text-align: center;
     }
 }
