@@ -15,6 +15,39 @@ body {
     color: #ff7e1a;
 }
 
+/*------------------------------------------Buttons*/
+
+.btn {
+    background-color: #ee6e73;
+}
+
+/*------------------------------------------Navbar*/
+
+.active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*------------------------------------------Home page*/
+
+.daily-recipe-header {
+    color: #ee6e73;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+.daily-recipe-padding {
+    margin-bottom: 0px;
+}
+
+/*------------------------------------------Cuisine page*/
+
+.responsive-img-cuisine {
+    height: 245px !important;
+    width: 100%;
+}
+
 /*------------------------------------------Collections page*/
 
 .collections-header {
@@ -33,18 +66,6 @@ body {
 
 .recipe-count {
     color: #ff7e1a;
-}
-
-/*------------------------------------------Buttons*/
-
-.btn {
-    background-color: #ee6e73;
-}
-
-/*------------------------------------------Navbar*/
-
-.active {
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*------------------------------------------Special Padding/Margins/Display*/
@@ -90,20 +111,6 @@ main {
 
 .img-padding {
     padding-top: 10px !important;
-}
-
-/*------------------------------------------Home page*/
-
-.daily-recipe-header {
-    color: #ee6e73;
-    padding-top: 20px;
-    padding-bottom: 0px;
-    margin: 0px;
-    text-align: center;
-}
-
-.daily-recipe-padding {
-    margin-bottom: 0px;
 }
 
 /*------------------------------------------Images*/
@@ -199,6 +206,10 @@ main {
         font-size: 30px;
         text-align: center;
     }
+
+    responsive-img-cuisine {
+        height: 300px !important;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1366px) {
@@ -228,6 +239,10 @@ main {
     .collections-header {
         text-align: center;
     }
+
+    .responsive-img-cuisine {
+        height: 375px !important;
+    }
 }
 
 @media (min-width: 1366px) {
@@ -256,5 +271,10 @@ main {
 
     .collections-header {
         text-align: center;
+    }
+
+    .responsive-img-cuisine {
+        height: 400px !important;
+        width: 90% !important;
     }
 }
