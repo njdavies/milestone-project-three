@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- The following form is to be completed when adding a new recipe to the database.  -->
+
+<div class="row collections-header">
+    <h1>If you have a recipe you would like to share, please complete our form!</h1>
+</div>
+
+<div class="row">
+    <form action="{{ url_for('insert_recipe') }}" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">cake</i>
+                <select id="type" name="type" required>
+                    <option value="" disabled selected></option>
+                    {% for type in cakeTypes %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+                <label>Cake Type</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Select your type of cake</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">label</i>
+                <input type="text" id="name" name="name" required />
+                <label for="name">Cake Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">add_a_photo</i>
+                <input type="text" id="image" name="image" required />
+                <label for="image">Image</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Please provide the link to your
+                    image</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">flag</i>
+                <select id="cuisine" name="cuisine" required>
+                    <option value="" disabled selected></option>
+                    {% for type in cuisineTypes %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+                <label>Cuisine</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Select your cake's cuisine</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">portrait</i>
+                <input type="text" id="author" name="author" required />
+                <label for="author">Author</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12" required>
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">local_hospital</i>
+                <select id="healthy" name="healthy" required>
+                    <option value="" disabled selected></option>
+                    {% for type in healthyTypes %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+                <label>Healthy</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">timer</i>
+                <input type="number" id="prepTime" name="prepTime" required />
+                <label for="prepTime">Preparation Time</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Please input the time in
+                    minutes</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">timer</i>
+                <input type="number" id="cookTime" name="cookTime" required />
+                <label for="cookTime">Cooking Time</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Please input the time in
+                    minutes</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">timer</i>
+                <input type="number" id="readyIn" name="readyIn" required />
+                <label for="readyIn">Total Time</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Please input the time in
+                    minutes</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">restaurant</i>
+                <input type="number" id="serves" name="serves" required />
+                <label for="serves">Servings</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">list</i>
+                <textarea class="materialize-textarea" id="ingredients" name="ingredients" required></textarea>
+                <label for="ingredients">Ingredients</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Please input each ingredient on a new
+                    line</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <textarea class="materialize-textarea" id="instructions" name="instructions" required></textarea>
+                <label for="instructions">Instructions</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Please input each instruction on a new
+                    line</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="center-align">
+                <button id="add-recipe" class="btn hoverEnabled" type="submit" name="action">
+                    Add recipe
+                    <i class="material-icons right">playlist_add</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
