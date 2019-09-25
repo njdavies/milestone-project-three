@@ -140,6 +140,41 @@ def insert_recipe():
     return redirect(url_for("home"))
 
 
+@app.route("/edit_recipe/<recipe_id>")
+def edit_recipe(recipe_id):
+    """
+    Function called when editing a recipe.
+    """
+    the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
+    cake_types = mongo.db.recipes.distinct("type")
+    cuisine_types = mongo.db.recipes.distinct("cuisine")
+    healthy_types = mongo.db.recipes.distinct("healthy")
+
+    recipe_Lists = mongo.db.recipes.find_one(
+        {"_id": ObjectId(recipe_id)})
+
+    # Create empty strings to be populated with each ingredient/instruction from the
+    # respective array in the database
+    ingredientsList = ""
+    instructionsList = ""
+
+    for ingredient in recipe_Lists["ingredients"]:
+        # Put each ingredient on a newline within the ingredientsList string
+        ingredientsList += ingredient + "\n"
+        # Delete last newline from ingredientsList string as this will be empty
+        # and store result in new string variable newIngredientsList
+        newIngredientsList = ingredientsList.strip()
+
+    for instruction in recipe_Lists["instructions"]:
+        # Put each instruction on a newline within the instructonsList string
+        instructionsList += instruction + "\n"
+        # Delete last newline from instructionsList string as this will be empty
+        # and store result in new string variable newInstructionsList
+        newInstructionsList = instructionsList.strip()
+
+    return render_template("editrecipe.html", recipe=the_recipe, cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types, ingredients=newIngredientsList, instructions=newInstructionsList)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
