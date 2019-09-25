@@ -175,6 +175,41 @@ def edit_recipe(recipe_id):
     return render_template("editrecipe.html", recipe=the_recipe, cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types, ingredients=newIngredientsList, instructions=newInstructionsList)
 
 
+@app.route("/update_recipe/<recipe_id>", methods=["POST"])
+def update_recipe(recipe_id):
+    """
+    Function called when selecting the Update recipe button from the Edit recipe page. This function operates
+    similarly to the insert recipe function, but instead of adding a new record it simply updates the fields
+    for an existing record.
+    """
+
+    ingredients_list = request.form["ingredients"].split("\n")
+    instructions_list = request.form["instructions"].split("\n")
+
+    recipe = mongo.db.recipes
+    recipe.update(
+        {"_id": ObjectId(recipe_id)},
+        {"$set": {
+            "type": request.form.get("type"),
+            "name": request.form.get("name"),
+            "image": request.form.get("image"),
+            "cuisine": request.form.get("cuisine"),
+            "author": request.form.get("author"),
+            "description": request.form.get("description"),
+            "healthy": request.form.get("healthy"),
+            "time_to_cook": {
+                "prepTime": int(request.form.get("prepTime")),
+                "cookTime": int(request.form.get("cookTime")),
+                "readyIn": int(request.form.get("readyIn")),
+            },
+            "serves": int(request.form.get("serves")),
+            "ingredients": ingredients_list,
+            "instructions": instructions_list
+        }
+        })
+    return redirect(url_for('recipe', recipe_id=recipe_id))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
