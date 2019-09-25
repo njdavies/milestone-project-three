@@ -28,7 +28,7 @@
                                 class="material-icons">menu</i></a>
                         <ul class="hide-on-med-and-down right">
                             <li><a href="{{ url_for('home') }}">Home</a></li>
-                            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+                            <li><a href="">Recipes</a></li>
                             <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
                             <li>
                                 <a href="{{ url_for('cake_collections') }}">Cake Collections</a>
@@ -42,7 +42,7 @@
         <!-- Side Navigation bar which will activate for smaller viewports -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+            <li><a href="">Recipes</a></li>
             <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
             <li>
                 <a href="{{ url_for('cake_collections') }}">Cake Collections</a>
@@ -76,6 +76,17 @@
         $(document).ready(function () {
             $('.fixed-action-btn').floatingActionButton();
             $('.sidenav').sidenav();
+            $('.materialboxed').materialbox();
+            $('.tooltipped').tooltip();
+            $('hr:last').remove();
+            $('select').formSelect();
+            $("select[required]").css({
+                display: "block",
+                height: 0,
+                padding: 0,
+                width: 0,
+                position: 'absolute'
+            });
         });
     </script>
 </body>
