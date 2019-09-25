@@ -210,6 +210,15 @@ def update_recipe(recipe_id):
     return redirect(url_for('recipe', recipe_id=recipe_id))
 
 
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    """
+    Function called when selecting the Delete recipe option from the floating action button.
+    """
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    return redirect(url_for("home"))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=(os.environ.get('PORT')),
