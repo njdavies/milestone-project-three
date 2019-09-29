@@ -15,8 +15,8 @@ mongo = PyMongo(app)
 @app.route("/home")
 def home():
     """
-    Request one random record from the database and store this in the 
-    recipe variable. This is then passed to the render_template method 
+    Request one random record from the database and store this in the
+    recipe variable. This is then passed to the render_template method
     to be used when rendering the index.html page.
     """
     return render_template("index.html", recipe=mongo.db.recipes.aggregate([{"$sample": {"size": 1}}]))
@@ -69,7 +69,7 @@ def healthy():
 @app.route("/selected_recipes/<key>,<value>")
 def selected_recipes(key, value):
     """
-    For the selected cake collection selected i.e. Chocolate, loaf etc, send a query to the database to find a 
+    For the selected cake collection selected i.e. Chocolate, loaf etc, send a query to the database to find a
     list of those recipes. These records are then stored in the variable recipes and passed to the render_template
     method to be used when rendering the selectedrecipes.html page.
     """
@@ -90,7 +90,7 @@ def recipe(recipe_id):
 @app.route("/add_recipe")
 def add_recipe():
     """
-    Request each unique value for the fields 'type', 'cuisine' and 'healthy' in the database. The values returned are 
+    Request each unique value for the fields 'type', 'cuisine' and 'healthy' in the database. The values returned are
     stored in the recipes variable. These unique values will then be used in the addrecipe.html page to correctly
     display a list of options to select from when adding a new recipe.
     """
@@ -103,7 +103,7 @@ def add_recipe():
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     """
-    Function called when a user submits a new recipe to the database. 
+    Function called when a user submits a new recipe to the database.
     """
 
     # Take each line from the ingredients textarea of the addrecipe.html
@@ -137,7 +137,18 @@ def insert_recipe():
         "ingredients": ingredients_list,
         "instructions": instructions_list
     })
-    return redirect(url_for("home"))
+    return redirect(url_for("new_recipe"))
+
+
+@app.route("/new_recipe")
+def new_recipe():
+    """
+    Find the latest recipe added to the database, save this in the new_recipe
+    variable and then pass this to the render_template method to be used when 
+    rendering the recipe.html page.
+    """
+    new_recipe = mongo.db.recipes.find().sort("_id", -1).limit(1)
+    return render_template("recipe.html", recipe=new_recipe)
 
 
 @app.route("/edit_recipe/<recipe_id>")
