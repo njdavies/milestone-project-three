@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
-{% if not recipes %}
 <!-- If there are no recipes under the selected collection/filter the following html is displayed -->
+{% if recipe_count == 0 %}
 <div class="row collections-header">
     <h1>No recipes available!</h1>
 </div>
