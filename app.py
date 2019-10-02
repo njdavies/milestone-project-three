@@ -49,9 +49,11 @@ def search_recipes():
     cuisineType = request.form.get("cuisine")
     healthyType = request.form.get("healthy")
     sortItems = request.form.get("sort")
-    recipes = recipes = mongo.db.recipes.find({"$and": [{"type": cakeType}, {"cuisine": cuisineType}, {"healthy": healthyType}]}).sort(
+    recipes = mongo.db.recipes.find({"$and": [{"type": cakeType}, {"cuisine": cuisineType}, {"healthy": healthyType}]}).sort(
         [(sortItems, -1)])
-    return render_template("selectedrecipes.html", recipes=recipes)
+    recipe_count = mongo.db.recipes.count_documents(
+        {"$and": [{"type": cakeType}, {"cuisine": cuisineType}, {"healthy": healthyType}]})
+    return render_template("selectedrecipes.html", recipes=recipes, recipe_count=recipe_count)
 
 
 @app.route("/cuisine")
