@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = "online_cookbook"
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+app.secret_key = os.urandom(24)
 
 mongo = PyMongo(app)
 
@@ -148,6 +149,7 @@ def new_recipe():
     rendering the recipe.html page.
     """
     new_recipe = mongo.db.recipes.find().sort("_id", -1).limit(1)
+    flash("Recipe added!")
     return render_template("recipe.html", recipe=new_recipe)
 
 
@@ -218,6 +220,7 @@ def update_recipe(recipe_id):
             "instructions": instructions_list
         }
         })
+    flash("Recipe updated!")
     return redirect(url_for('recipe', recipe_id=recipe_id))
 
 
