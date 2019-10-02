@@ -28,11 +28,9 @@
                                 class="material-icons">menu</i></a>
                         <ul class="hide-on-med-and-down right">
                             <li><a href="{{ url_for('home') }}">Home</a></li>
-                            <li><a href="">Recipes</a></li>
+                            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
                             <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
-                            <li>
-                                <a href="{{ url_for('cake_collections') }}">Cake Collections</a>
-                            </li>
+                            <li><a href="{{ url_for('cake_collections') }}">Cake Collections</a></li>
                             <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
                         </ul>
                     </div>
@@ -42,11 +40,9 @@
         <!-- Side Navigation bar which will activate for smaller viewports -->
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="">Recipes</a></li>
+            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="{{ url_for('cuisine') }}">Cuisine</a></li>
-            <li>
-                <a href="{{ url_for('cake_collections') }}">Cake Collections</a>
-            </li>
+            <li><a href="{{ url_for('cake_collections') }}">Cake Collections</a></li>
             <li><a href="{{ url_for('healthy') }}">Health & Diet</a></li>
         </ul>
     </header>
