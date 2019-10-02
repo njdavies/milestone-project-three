@@ -23,6 +23,48 @@ def home():
     return render_template("index.html", recipe=mongo.db.recipes.aggregate([{"$sample": {"size": 1}}]))
 
 
+@app.route("/recipes")
+def recipes():
+    """
+    Request each unique value for the fields 'type', 'cuisine' and 'healthy' in the database. These unique values
+    will then be passed to the recipes.html page to correctly display a list of options to select from when searching recipes.
+    """
+    cake_types = mongo.db.recipes.distinct("type")
+    cuisine_types = mongo.db.recipes.distinct("cuisine")
+    healthy_types = mongo.db.recipes.distinct("healthy")
+    return render_template("recipes.html", recipes=mongo.db.recipes.find(), cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
+
+
+@app.route("/search_recipes", methods=["POST"])
+def search_recipes():
+    """
+    Function called when a user searches the database using the form on the recipes.html page.
+    The values submitted on the form are stored in variables below and then passed to MongoDB
+    query to find the list of recipes. These recipes are then sorted using the value in the
+    sortItems variable.
+    """
+    cakeType = request.form.get("type")
+    cuisineType = request.form.get("cuisine")
+    healthyType = request.form.get("healthy")
+    sortItems = request.form.get("sort")
+    return render_template("selectedrecipes.html", recipes=mongo.db.recipes.find({"$and": [{"type": cakeType}, {"cuisine": cuisineType}, {"healthy": healthyType}]}).sort(
+        [(sortItems, -1)]))
+
+
+@app.route("/cuisine")
+def cuisine():
+    """
+    Request a count of each cuisine type in the database and store this value
+    in the respective variable. This is then passed to the render_template
+    method to be used in rendering the cuisine.html page.
+    """
+    british = mongo.db.recipes.find({"cuisine": "British"}).count()
+    american = mongo.db.recipes.find({"cuisine": "American"}).count()
+    french = mongo.db.recipes.find({"cuisine": "French"}).count()
+    greek = mongo.db.recipes.find({"cuisine": "Greek"}).count()
+    return render_template("cuisine.html", britishCount=british, americanCount=american, frenchCount=french, greekCount=greek)
+
+
 @app.route("/cake_collections")
 def cake_collections():
     """
@@ -38,20 +80,6 @@ def cake_collections():
     traybake = mongo.db.recipes.find({"type": "Traybake"}).count()
     return render_template("cakecollections.html", chocolateCount=chocolate, loafCount=loaf, spongeCount=sponge,
                            cheesecakeCount=cheesecake, nutAndSeedCount=nutAndSeed, traybakeCount=traybake)
-
-
-@app.route("/cuisine")
-def cuisine():
-    """
-    Request a count of each cuisine type in the database and store this value
-    in the respective variable. This is then passed to the render_template
-    method to be used in rendering the cuisine.html page.
-    """
-    british = mongo.db.recipes.find({"cuisine": "British"}).count()
-    american = mongo.db.recipes.find({"cuisine": "American"}).count()
-    french = mongo.db.recipes.find({"cuisine": "French"}).count()
-    greek = mongo.db.recipes.find({"cuisine": "Greek"}).count()
-    return render_template("cuisine.html", britishCount=british, americanCount=american, frenchCount=french, greekCount=greek)
 
 
 @app.route("/healthy")
@@ -145,7 +173,7 @@ def insert_recipe():
 def new_recipe():
     """
     Find the latest recipe added to the database, save this in the new_recipe
-    variable and then pass this to the render_template method to be used when 
+    variable and then pass this to the render_template method to be used when
     rendering the recipe.html page.
     """
     new_recipe = mongo.db.recipes.find().sort("_id", -1).limit(1)
