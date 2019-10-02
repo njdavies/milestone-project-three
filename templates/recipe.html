@@ -1,7 +1,18 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 
-<!-- When a recipe is selected from the list of recipes displayed on the selected recipes page,
-the following html is rendered -->
+<!-- Check if recipe has been added/edited and display flash message confirmation
+from the apppropriate view. Note that the formatting on this page  -->
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<h1 class="daily-recipe-header">{{ message }}</h1>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<!-- When recipe selected from a collection or added/updated in the database it is displayed here -->
 
 <div class="container">
     <br>
@@ -28,7 +39,8 @@ the following html is rendered -->
                 <p>{{ rec.description }}</p>
             </div>
             <div class="center-align">
-                <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp; <span>Cake
+                <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp;
+                <span>Cake
                     Type: <span class="highlight-colour">{{ rec.type }}</span></span>
             </div>
         </div>
@@ -66,9 +78,7 @@ the following html is rendered -->
             </ol>
         </div>
     </div>
-
 </div>
-
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large button-colour red">
         <i class="large material-icons">build</i>
