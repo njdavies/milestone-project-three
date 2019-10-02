@@ -322,4 +322,8 @@ main {
     .health-padding {
         padding-bottom: 418px;
     }
+
+    .recipes-padding {
+        padding-bottom: 418px !important;
+    }
 }
