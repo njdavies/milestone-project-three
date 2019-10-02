@@ -20,7 +20,8 @@ def home():
     recipe variable. This is then passed to the render_template method
     to be used when rendering the index.html page.
     """
-    return render_template("index.html", recipe=mongo.db.recipes.aggregate([{"$sample": {"size": 1}}]))
+    recipe = mongo.db.recipes.aggregate([{"$sample": {"size": 1}}])
+    return render_template("index.html", recipe=recipe)
 
 
 @app.route("/recipes")
@@ -32,7 +33,8 @@ def recipes():
     cake_types = mongo.db.recipes.distinct("type")
     cuisine_types = mongo.db.recipes.distinct("cuisine")
     healthy_types = mongo.db.recipes.distinct("healthy")
-    return render_template("recipes.html", recipes=mongo.db.recipes.find(), cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
+    recipes = mongo.db.recipes.find()
+    return render_template("recipes.html", recipes=recipes, cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
 
 
 @app.route("/search_recipes", methods=["POST"])
@@ -47,8 +49,9 @@ def search_recipes():
     cuisineType = request.form.get("cuisine")
     healthyType = request.form.get("healthy")
     sortItems = request.form.get("sort")
-    return render_template("selectedrecipes.html", recipes=mongo.db.recipes.find({"$and": [{"type": cakeType}, {"cuisine": cuisineType}, {"healthy": healthyType}]}).sort(
-        [(sortItems, -1)]))
+    recipes = recipes = mongo.db.recipes.find({"$and": [{"type": cakeType}, {"cuisine": cuisineType}, {"healthy": healthyType}]}).sort(
+        [(sortItems, -1)])
+    return render_template("selectedrecipes.html", recipes=recipes)
 
 
 @app.route("/cuisine")
@@ -102,7 +105,8 @@ def selected_recipes(key, value):
     list of those recipes. These records are then stored in the variable recipes and passed to the render_template
     method to be used when rendering the selectedrecipes.html page.
     """
-    return render_template("selectedrecipes.html", recipes=mongo.db.recipes.find({key: value}))
+    recipes = mongo.db.recipes.find({key: value})
+    return render_template("selectedrecipes.html", recipes=recipes)
 
 
 @app.route("/recipe/<recipe_id>")
@@ -126,7 +130,8 @@ def add_recipe():
     cake_types = mongo.db.recipes.distinct("type")
     cuisine_types = mongo.db.recipes.distinct("cuisine")
     healthy_types = mongo.db.recipes.distinct("healthy")
-    return render_template("addrecipe.html", recipes=mongo.db.recipes.find(), cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
+    recipes = mongo.db.recipes.find()
+    return render_template("addrecipe.html", recipes=recipes, cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
 
 
 @app.route("/insert_recipe", methods=["POST"])
