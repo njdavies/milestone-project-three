@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="row collections-header">
+    <h1>Search our extensive database of recipes using the options below</h1>
+</div>
+<div class="row">
+    <form action="{{ url_for('search_recipes') }}" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">cake</i>
+                <select id="type" name="type" required>
+                    <option value="" disabled selected></option>
+                    {% for type in cakeTypes %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+                <label>Cake Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">flag</i>
+                <select id="cuisine" name="cuisine" required>
+                    <option value="" disabled selected></option>
+                    {% for type in cuisineTypes %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+                <label>Cuisine Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">local_hospital</i>
+                <select id="healthy" name="healthy" required>
+                    <option value="" disabled selected></option>
+                    {% for type in healthyTypes %}
+                    <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+                <label>Health & Diet Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">sort</i>
+                <select id="sort" name="sort" required>
+                    <option value="" disabled selected></option>
+                    <option value="rating">Rating</option>
+                    <option value="views">Views</option>
+                    <option value="serves">Servings</option>
+                    <option value="time_to_cook.readyIn">Total Cooking Time</option>
+                </select>
+                <label>Sort by</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="center-align">
+                <button id="add-recipe" class="btn hoverEnabled" type="submit" name="action">
+                    Get recipes
+                    <i class="material-icons right">search</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
