@@ -230,7 +230,8 @@ def delete_recipe(recipe_id):
     Function called when selecting the Delete recipe option from the floating action button.
     """
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-    return redirect(url_for("home"))
+    flash("Recipe deleted!")
+    return redirect(url_for('recipe', recipe_id=recipe_id))
 
 
 if __name__ == '__main__':
