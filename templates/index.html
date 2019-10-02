@@ -82,7 +82,9 @@
                         class="material-icons">add</i></a>
             </li>
             <li><a href="{{url_for('delete_recipe', recipe_id=rec._id)}}" class="btn-floating red tooltipped"
-                    data-tooltip="Delete recipe" onclick="deleteFunction()"><i class="material-icons">delete</i></a>
+                    data-tooltip="Delete recipe"
+                    onclick="return confirm('Are you sure you want to delete this recipe?');"><i
+                        class="material-icons">delete</i></a>
             </li>
             <li><a href="{{url_for('edit_recipe', recipe_id=rec._id)}}" class="btn-floating red tooltipped"
                     data-tooltip="Edit recipe"><i class="material-icons">edit</i></a>
@@ -93,10 +95,10 @@
     {% endfor %}
 </div>
 
-<script>
+<!-- <script>
     function deleteFunction() {
-        alert("Are you sure you want to delete this recipe?")
+        confirm("Are you sure you want to delete this recipe?")
     }
-</script>
+</script> -->
 
 {% endblock %}
