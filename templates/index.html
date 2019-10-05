@@ -25,8 +25,7 @@
                 {% endfor %}
             </div>
             <div class="center-align">
-                <span>{{ rec.time_to_cook.readyIn }} min</span> &nbsp;|&nbsp; <span>{{ rec.views }}
-                    views</span>
+                <span>{{ rec.time_to_cook.readyIn }} min</span> &nbsp;|&nbsp; <span>{{ rec.views }} views</span>
             </div>
             <div>
                 <p>{{ rec.description }}</p>
@@ -34,8 +33,7 @@
             <div class="center-align">
                 <div class="center-align">
                     <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp;
-                    <span>Cake
-                        Type: <span class="highlight-colour">{{ rec.type }}</span></span>
+                    <span>Cake Type: <span class="highlight-colour">{{ rec.type }}</span></span>
                 </div>
             </div>
         </div>
@@ -83,15 +81,14 @@
             </li>
             <li><a href="{{url_for('delete_recipe', recipe_id=rec._id)}}" class="btn-floating red tooltipped"
                     data-tooltip="Delete recipe"
-                    onclick="return confirm('Are you sure you want to delete this recipe?');"><i
-                        class="material-icons">delete</i></a>
+                    onclick="return confirm('Are you sure you want to delete this recipe?');">
+                    <i class="material-icons">delete</i></a>
             </li>
             <li><a href="{{url_for('edit_recipe', recipe_id=rec._id)}}" class="btn-floating red tooltipped"
                     data-tooltip="Edit recipe"><i class="material-icons">edit</i></a>
             </li>
         </ul>
     </div>
-
     {% endfor %}
 </div>
 
