@@ -33,7 +33,6 @@ def recipes():
     cake_types = mongo.db.recipes.distinct("type")
     cuisine_types = mongo.db.recipes.distinct("cuisine")
     healthy_types = mongo.db.recipes.distinct("healthy")
-    recipes = mongo.db.recipes.find()
     return render_template("recipes.html", recipes=recipes, cakeTypes=cake_types, cuisineTypes=cuisine_types, healthyTypes=healthy_types)
 
 
