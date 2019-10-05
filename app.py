@@ -104,7 +104,7 @@ def healthy():
 @app.route("/selected_recipes/<key>,<value>")
 def selected_recipes(key, value):
     """
-    For the selected cake collection selected i.e. Chocolate, loaf etc, send a query to the database to find a
+    For the selected cake collection i.e. Chocolate, loaf etc, send a query to the database to find a
     list of those recipes. These records are then stored in the variable recipes and passed to the render_template
     method to be used when rendering the selectedrecipes.html page.
     """
