@@ -42,7 +42,9 @@ def search_recipes():
     Function called when a user searches the database using the form on the recipes.html page.
     The values submitted on the form are stored in variables below and then passed to MongoDB
     query to find the list of recipes. These recipes are then sorted using the value in the
-    sortItems variable.
+    sortItems variable. A second request is made to the database to count the number of 
+    records returned from the first query. This is used to determine which HTML is displayed
+    in the selectedrecipes.html page.
     """
     cakeType = request.form.get("type")
     cuisineType = request.form.get("cuisine")
