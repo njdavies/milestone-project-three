@@ -139,7 +139,8 @@ def add_recipe():
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     """
-    Function called when a user submits a new recipe to the database.
+    Function called when a user submits a new recipe to the database. The record is inserted into the database
+    by requesting the value of each of the fields in the input form.
     """
 
     # Take each line from the ingredients textarea of the addrecipe.html
