@@ -184,7 +184,7 @@ def new_recipe():
     variable and then pass this to the render_template method to be used when
     rendering the recipe.html page.
     """
-    new_recipe = mongo.db.recipes.find().sort("_id", -1).limit(1)
+    new_recipe = mongo.db.recipes.find().sort("_id", -1)
     flash("Recipe added!")
     return render_template("recipe.html", recipe=new_recipe)
 
@@ -275,5 +275,4 @@ def delete_recipe(recipe_id):
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-            port=(os.environ.get('PORT')),
-            debug=True)
+            port=(os.environ.get('PORT')))
