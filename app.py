@@ -192,7 +192,10 @@ def new_recipe():
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
     """
-    Function called when editing a recipe.
+    Function called when editing a recipe. The record is called from the database
+    by passing the recipe id to the query. The unique values for the fields 'type', 
+    'cuisine' and 'healthy' are also requested as they will be used to correctly
+    display the input form select options. 
     """
     the_recipe = mongo.db.recipes.find({"_id": ObjectId(recipe_id)})
     cake_types = mongo.db.recipes.distinct("type")
