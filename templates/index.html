@@ -12,7 +12,7 @@
             <div class="center-align">
                 <h1 class="recipe-name-margin">{{ rec.name }}</h1>
             </div>
-            <div class="center-align rating-padding">
+            <div class="center-align rating-margin">
                 <!-- Set the value of the remainder variable by deducting the recipe rating from 10 -->
                 {% set remainder = 10 - rec.rating %}
                 <!-- Add a checked star icon for each number between 1 and the recipe rating -->
@@ -31,10 +31,8 @@
                 <p>{{ rec.description }}</p>
             </div>
             <div class="center-align">
-                <div class="center-align">
-                    <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp;
-                    <span>Cake Type: <span class="highlight-colour">{{ rec.type }}</span></span>
-                </div>
+                <span>Author: <span class="highlight-colour">{{ rec.author }}</span></span> &nbsp;|&nbsp;
+                <span>Cake Type: <span class="highlight-colour">{{ rec.type }}</span></span>
             </div>
         </div>
         <div class="col s12 m6 img-padding">
