@@ -24,7 +24,6 @@ a {
     color: black;
 }
 
-
 /*------------------------------------------Buttons*/
 
 .btn {
@@ -33,13 +32,6 @@ a {
 
 .btn:hover {
     background-color: black !important;
-}
-
-
-/*------------------------------------------Navbar*/
-
-.active {
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*------------------------------------------Home page*/
@@ -229,7 +221,11 @@ main {
         text-align: center;
     }
 
-    responsive-img-cuisine {
+    .collections-type {
+        font-size: 20px;
+    }
+
+    .responsive-img-cuisine {
         height: 300px !important;
     }
 
@@ -266,6 +262,7 @@ main {
 }
 
 @media (max-width: 1024px) {
+
     .container {
         width: 100%;
     }
