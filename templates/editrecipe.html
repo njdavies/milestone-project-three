@@ -66,9 +66,9 @@ the same as the add recipe page, but this time each field has been pre-populated
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12" required>
+            <div class="input-field col s12">
                 <i class="material-icons prefix">mode_edit</i>
-                <textarea class="materialize-textarea" id="description" name="description"
+                <textarea class="materialize-textarea" id="description" name="description" required
                     value="{{ rec.description }}">{{ rec.description }}</textarea>
                 <label for="description">Description</label>
             </div>
