@@ -184,7 +184,7 @@ def new_recipe():
     variable and then pass this to the render_template method to be used when
     rendering the recipe.html page.
     """
-    new_recipe = mongo.db.recipes.find().sort("_id", -1)
+    new_recipe = mongo.db.recipes.find({}).sort("_id", -1).limit(1)
     flash("Recipe added!")
     return render_template("recipe.html", recipe=new_recipe)
 
