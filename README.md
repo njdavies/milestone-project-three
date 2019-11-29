@@ -128,46 +128,51 @@ I tested the User Stories I had put together by conducting the following scenari
 
 Input the following recipe into the form for testing purposes:
 
-Cake Type: Sponge
-Cake Name: Basic plain sponge cake
-Image: http://ukcdn.ar-cdn.com/recipes/port960/893b2533-380e-400a-a7f8-23e5d61b09da.jpg
-Cuisine: British
-Author: kuppet
-Description: This is a simple sponge cake recipe - you can serve it plain sandwiched with jam to make a Victoria sponge cake, or fill with buttercream for a birthday cake.
-Healthy: None
-Preparation Time: 20
-Cooking Time: 25
-Total Time: 45
-Servings: 8
-Ingredients: 225g (8 oz) self-raising flour
-225g (8 oz) butter, at room temperature
-225g (8 oz) caster sugar
-4 eggs
-1 teaspoon baking powder
-Instructions: Preheat the oven to 180 degrees C / gas mark 4.
-Measure all the ingredients into a large bowl.
-Mix all of the ingredients using a electric whisk.
-Pour the mixture into 2 non-stick 7 inch (18cm) tins.
-Place them in the oven till golden brown 15-25 minutes.
-Cool on a wire rack before serving.
+1. Cake Type: Sponge
+2. Cake Name: Basic plain sponge cake
+3. Image: http://ukcdn.ar-cdn.com/recipes/port960/893b2533-380e-400a-a7f8-23e5d61b09da.jpg
+4. Cuisine: British
+5. Author: kuppet
+6. Description: This is a simple sponge cake recipe - you can serve it plain sandwiched with jam to make a Victoria sponge cake, or fill with buttercream for a birthday cake.
+7. Healthy: None
+8. Preparation Time: 20
+9. Cooking Time: 25
+10. Total Time: 45
+11. Servings: 8
+12. Ingredients:
 
-7. Select Add Recipe and check that a message is displayed that confirms this has been added. Also check that the page displayed is the newly added recipe and that this is formatted correctly.
+    - 225g (8 oz) self-raising flour
+    - (8 oz) butter, at room temperature
+    - (8 oz) caster sugar
+    - 4 eggs
+    - 1 teaspoon baking powder
 
-8. Select the delete recipe option from the floating action button and select Ok when prompted. Check that confirmation is received that recipe has been deleted.
+13. Instructions:
 
-9. Select each of the Cuisine, Cake Collections and Health & Diet pages and perform the following tests:
+    - Preheat the oven to 180 degrees C / gas mark 4.
+    - Measure all the ingredients into a large bowl.
+    - Mix all of the ingredients using a electric whisk.
+    - Pour the mixture into 2 non-stick 7 inch (18cm) tins.
+    - Place them in the oven till golden brown 15-25 minutes.
+    - Cool on a wire rack before serving.
 
-   i. Check that a group of cake choices are displayed with numbers next to each option.
+14. Select Add Recipe and check that a message is displayed that confirms this has been added. Also check that the page displayed is the newly added recipe and that this is formatted correctly.
 
-   ii. Select each of the options and check that a list of recipes is displayed.
+15. Select the delete recipe option from the floating action button and select Ok when prompted. Check that confirmation is received that recipe has been deleted.
 
-   iii. Select the floating action button and check that the option to add a recipe is displayed.
+16. Select each of the Cuisine, Cake Collections and Health & Diet pages and perform the following tests:
 
-   iv. Select a random recipe from the list returned and check that a full page recipe description with ingredients and instructions is displayed.
+    i. Check that a group of cake choices are displayed with numbers next to each option.
 
-   v. Select the image of the random recipe and check that this image then is then displayed in fullscreen. Select the image again so that this reverts back to its original size.
+    ii. Select each of the options and check that a list of recipes is displayed.
 
-   vi. Select the floating action button and check that the options to edit or delete the recipe are available.
+    iii. Select the floating action button and check that the option to add a recipe is displayed.
+
+    iv. Select a random recipe from the list returned and check that a full page recipe description with ingredients and instructions is displayed.
+
+    v. Select the image of the random recipe and check that this image then is then displayed in fullscreen. Select the image again so that this reverts back to its original size.
+
+    vi. Select the floating action button and check that the options to edit or delete the recipe are available.
 
 During the development of the site I made extensive use of Chrome Developer Tools to view the content in different viewports and assess how it was behaving. This then led to me using multiple media queries to make subtle changes to the code so that the content was always displayed correctly.
 
