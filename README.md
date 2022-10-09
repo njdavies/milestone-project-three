@@ -194,7 +194,8 @@ I also set the environment variables MONGO_URI and SECRET_KEY, whose details I w
 
 Finally, I created a Procfile and requirements.txt file within my project folder and pushed these to my Git repository. The Procfile contained the following text to instruct Heroku that the application is a python web application: 'web: python app.py'. The requirements.txt file was created by running 'pip freeze > requirements.txt' within my terminal. This then created a list of the dependencies that my project utilised. Heroku also needs this so that it installs these dependencies for each build.
 
-Heroku provided the following domain for the fully deployed site: https://online-cookbook-project-three.herokuapp.com/
+Heroku provided the following domain for the fully deployed site: https://online-cookbook-project-three.herokuapp.com/  
+Update October 2022 - The stack for this site in Heroku has recently been updated.
 
 To run locally, first create a new workspace in your local computer. Then use \$ git clone https://github.com/njdavies/milestone-project-three to create a local copy of the code.
 
